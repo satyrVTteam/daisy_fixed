@@ -1,0 +1,926 @@
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.eabi_attribute 28, 1
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 2
+  10              		.eabi_attribute 34, 1
+  11              		.eabi_attribute 18, 4
+  12              		.file	"Looper.cpp"
+  13              		.text
+  14              		.section	.text._ZN5daisy10DaisyPetalD2Ev,"axG",%progbits,_ZN5daisy10DaisyPetalD5Ev,comdat
+  15              		.align	1
+  16              		.p2align 2,,3
+  17              		.weak	_ZN5daisy10DaisyPetalD2Ev
+  18              		.arch armv7e-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv5-d16
+  24              	_ZN5daisy10DaisyPetalD2Ev:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 7047     		bx	lr
+  30              		.weak	_ZN5daisy10DaisyPetalD1Ev
+  31              		.thumb_set _ZN5daisy10DaisyPetalD1Ev,_ZN5daisy10DaisyPetalD2Ev
+  32 0002 00BF     		.section	.text._Z11ResetBufferv,"ax",%progbits
+  33              		.align	1
+  34              		.p2align 2,,3
+  35              		.global	_Z11ResetBufferv
+  36              		.syntax unified
+  37              		.thumb
+  38              		.thumb_func
+  39              		.fpu fpv5-d16
+  41              	_Z11ResetBufferv:
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 0, uses_anonymous_args = 0
+  44 0000 0021     		movs	r1, #0
+  45 0002 0B4A     		ldr	r2, .L6
+  46 0004 0B4B     		ldr	r3, .L6+4
+  47 0006 0C48     		ldr	r0, .L6+8
+  48 0008 10B5     		push	{r4, lr}
+  49 000a 0C4C     		ldr	r4, .L6+12
+  50 000c 1170     		strb	r1, [r2]
+  51 000e 0122     		movs	r2, #1
+  52 0010 0170     		strb	r1, [r0]
+  53 0012 1A70     		strb	r2, [r3]
+  54 0014 2268     		ldr	r2, [r4]
+  55 0016 0A48     		ldr	r0, .L6+16
+  56 0018 0A4B     		ldr	r3, .L6+20
+  57 001a 8A42     		cmp	r2, r1
+  58 001c 0160     		str	r1, [r0]
+  59 001e 1960     		str	r1, [r3]
+  60 0020 03DD     		ble	.L4
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 2
+
+
+  61 0022 9200     		lsls	r2, r2, #2
+  62 0024 0848     		ldr	r0, .L6+24
+  63 0026 FFF7FEFF 		bl	memset
+  64              	.L4:
+  65 002a 084B     		ldr	r3, .L6+28
+  66 002c 2360     		str	r3, [r4]
+  67 002e 10BD     		pop	{r4, pc}
+  68              	.L7:
+  69              		.align	2
+  70              	.L6:
+  71 0030 00000000 		.word	.LANCHOR1
+  72 0034 00000000 		.word	.LANCHOR2
+  73 0038 00000000 		.word	.LANCHOR0
+  74 003c 00000000 		.word	.LANCHOR5
+  75 0040 00000000 		.word	.LANCHOR3
+  76 0044 00000000 		.word	.LANCHOR4
+  77 0048 00000000 		.word	buf
+  78 004c 00BADB00 		.word	14400000
+  80              		.section	.text.startup.main,"ax",%progbits
+  81              		.align	1
+  82              		.p2align 2,,3
+  83              		.global	main
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  87              		.fpu fpv5-d16
+  89              	main:
+  90              		@ Volatile: function does not return.
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93 0000 0021     		movs	r1, #0
+  94 0002 1448     		ldr	r0, .L11
+  95 0004 144D     		ldr	r5, .L11+4
+  96 0006 154C     		ldr	r4, .L11+8
+  97 0008 08B5     		push	{r3, lr}
+  98 000a FFF7FEFF 		bl	_ZN5daisy10DaisyPetal4InitEb
+  99 000e FFF7FEFF 		bl	_Z11ResetBufferv
+ 100 0012 1048     		ldr	r0, .L11
+ 101 0014 FFF7FEFF 		bl	_ZN5daisy10DaisyPetal8StartAdcEv
+ 102 0018 1149     		ldr	r1, .L11+12
+ 103 001a 0E48     		ldr	r0, .L11
+ 104 001c FFF7FEFF 		bl	_ZN5daisy10DaisyPetal10StartAudioEPFvPfS1_jE
+ 105              	.L9:
+ 106 0020 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 107 0022 0121     		movs	r1, #1
+ 108 0024 0B48     		ldr	r0, .L11
+ 109 0026 00EE103A 		vmov	s0, r3	@ int
+ 110 002a B8EE400A 		vcvt.f32.u32	s0, s0
+ 111 002e FFF7FEFF 		bl	_ZN5daisy10DaisyPetal16SetFootswitchLedENS0_13FootswitchLedEf
+ 112 0032 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 113 0034 0021     		movs	r1, #0
+ 114 0036 0748     		ldr	r0, .L11
+ 115 0038 00EE103A 		vmov	s0, r3	@ int
+ 116 003c B8EE400A 		vcvt.f32.u32	s0, s0
+ 117 0040 FFF7FEFF 		bl	_ZN5daisy10DaisyPetal16SetFootswitchLedENS0_13FootswitchLedEf
+ 118 0044 0348     		ldr	r0, .L11
+ 119 0046 FFF7FEFF 		bl	_ZN5daisy10DaisyPetal10UpdateLedsEv
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 3
+
+
+ 120 004a 1020     		movs	r0, #16
+ 121 004c FFF7FEFF 		bl	_ZN5daisy6System5DelayEm
+ 122 0050 E6E7     		b	.L9
+ 123              	.L12:
+ 124 0052 00BF     		.align	2
+ 125              	.L11:
+ 126 0054 00000000 		.word	.LANCHOR6
+ 127 0058 00000000 		.word	.LANCHOR0
+ 128 005c 00000000 		.word	.LANCHOR1
+ 129 0060 00000000 		.word	_ZL13AudioCallbackPfS_j
+ 131              		.section	.text._Z13UpdateButtonsv,"ax",%progbits
+ 132              		.align	1
+ 133              		.p2align 2,,3
+ 134              		.global	_Z13UpdateButtonsv
+ 135              		.syntax unified
+ 136              		.thumb
+ 137              		.thumb_func
+ 138              		.fpu fpv5-d16
+ 140              	_Z13UpdateButtonsv:
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 0, uses_anonymous_args = 0
+ 143 0000 304B     		ldr	r3, .L37
+ 144 0002 70B5     		push	{r4, r5, r6, lr}
+ 145 0004 93F82521 		ldrb	r2, [r3, #293]	@ zero_extendqisi2
+ 146 0008 7F2A     		cmp	r2, #127
+ 147 000a 20D0     		beq	.L33
+ 148 000c FF2A     		cmp	r2, #255
+ 149 000e 0DD1     		bne	.L17
+ 150 0010 9FED2D7A 		vldr.32	s14, .L37+4
+ 151 0014 D3ED4B7A 		vldr.32	s15, [r3, #300]
+ 152 0018 67EE877A 		vmul.f32	s15, s15, s14
+ 153 001c F4EEC77A 		vcmpe.f32	s15, s14
+ 154 0020 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 155 0024 02DB     		blt	.L17
+ 156 0026 294C     		ldr	r4, .L37+8
+ 157 0028 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 158 002a 62BB     		cbnz	r2, .L34
+ 159              	.L17:
+ 160 002c 93F83531 		ldrb	r3, [r3, #309]	@ zero_extendqisi2
+ 161 0030 7F2B     		cmp	r3, #127
+ 162 0032 00D0     		beq	.L35
+ 163              	.L13:
+ 164 0034 70BD     		pop	{r4, r5, r6, pc}
+ 165              	.L35:
+ 166 0036 264A     		ldr	r2, .L37+12
+ 167 0038 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 168 003a 002B     		cmp	r3, #0
+ 169 003c 3CD0     		beq	.L23
+ 170              	.L24:
+ 171 003e 2549     		ldr	r1, .L37+16
+ 172 0040 0020     		movs	r0, #0
+ 173 0042 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 174 0044 1070     		strb	r0, [r2]
+ 175 0046 83F00103 		eor	r3, r3, #1
+ 176 004a 0B70     		strb	r3, [r1]
+ 177 004c 70BD     		pop	{r4, r5, r6, pc}
+ 178              	.L33:
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 4
+
+
+ 179 004e 2248     		ldr	r0, .L37+20
+ 180 0050 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 181 0052 52B1     		cbz	r2, .L36
+ 182 0054 1E4A     		ldr	r2, .L37+12
+ 183 0056 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 184 0058 49B1     		cbz	r1, .L16
+ 185 005a 0024     		movs	r4, #0
+ 186 005c 1F4D     		ldr	r5, .L37+24
+ 187 005e 0470     		strb	r4, [r0]
+ 188 0060 1F48     		ldr	r0, .L37+28
+ 189 0062 0668     		ldr	r6, [r0]
+ 190 0064 0460     		str	r4, [r0]
+ 191 0066 2E60     		str	r6, [r5]
+ 192 0068 01E0     		b	.L16
+ 193              	.L36:
+ 194 006a 194A     		ldr	r2, .L37+12
+ 195 006c 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 196              	.L16:
+ 197 006e 0120     		movs	r0, #1
+ 198 0070 164C     		ldr	r4, .L37+8
+ 199 0072 93F83531 		ldrb	r3, [r3, #309]	@ zero_extendqisi2
+ 200 0076 2070     		strb	r0, [r4]
+ 201 0078 4140     		eors	r1, r1, r0
+ 202 007a 164C     		ldr	r4, .L37+16
+ 203 007c 7F2B     		cmp	r3, #127
+ 204 007e 1170     		strb	r1, [r2]
+ 205 0080 2070     		strb	r0, [r4]
+ 206 0082 D7D1     		bne	.L13
+ 207 0084 D7E7     		b	.L35
+ 208              	.L34:
+ 209 0086 0021     		movs	r1, #0
+ 210 0088 124A     		ldr	r2, .L37+16
+ 211 008a 114B     		ldr	r3, .L37+12
+ 212 008c 1170     		strb	r1, [r2]
+ 213 008e 0122     		movs	r2, #1
+ 214 0090 1970     		strb	r1, [r3]
+ 215 0092 114B     		ldr	r3, .L37+20
+ 216 0094 114D     		ldr	r5, .L37+24
+ 217 0096 1A70     		strb	r2, [r3]
+ 218 0098 124A     		ldr	r2, .L37+32
+ 219 009a 114B     		ldr	r3, .L37+28
+ 220 009c 1160     		str	r1, [r2]
+ 221 009e 2A68     		ldr	r2, [r5]
+ 222 00a0 1960     		str	r1, [r3]
+ 223 00a2 8A42     		cmp	r2, r1
+ 224 00a4 03DD     		ble	.L21
+ 225 00a6 9200     		lsls	r2, r2, #2
+ 226 00a8 0F48     		ldr	r0, .L37+36
+ 227 00aa FFF7FEFF 		bl	memset
+ 228              	.L21:
+ 229 00ae 0F4A     		ldr	r2, .L37+40
+ 230 00b0 0023     		movs	r3, #0
+ 231 00b2 2A60     		str	r2, [r5]
+ 232 00b4 2370     		strb	r3, [r4]
+ 233 00b6 70BD     		pop	{r4, r5, r6, pc}
+ 234              	.L23:
+ 235 00b8 074B     		ldr	r3, .L37+20
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 5
+
+
+ 236 00ba 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 237 00bc 002B     		cmp	r3, #0
+ 238 00be BED0     		beq	.L24
+ 239 00c0 B8E7     		b	.L13
+ 240              	.L38:
+ 241 00c2 00BF     		.align	2
+ 242              	.L37:
+ 243 00c4 00000000 		.word	.LANCHOR6
+ 244 00c8 00007A44 		.word	1148846080
+ 245 00cc 00000000 		.word	.LANCHOR7
+ 246 00d0 00000000 		.word	.LANCHOR1
+ 247 00d4 00000000 		.word	.LANCHOR0
+ 248 00d8 00000000 		.word	.LANCHOR2
+ 249 00dc 00000000 		.word	.LANCHOR5
+ 250 00e0 00000000 		.word	.LANCHOR4
+ 251 00e4 00000000 		.word	.LANCHOR3
+ 252 00e8 00000000 		.word	buf
+ 253 00ec 00BADB00 		.word	14400000
+ 255              		.section	.text._Z8Controlsv,"ax",%progbits
+ 256              		.align	1
+ 257              		.p2align 2,,3
+ 258              		.global	_Z8Controlsv
+ 259              		.syntax unified
+ 260              		.thumb
+ 261              		.thumb_func
+ 262              		.fpu fpv5-d16
+ 264              	_Z8Controlsv:
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267 0000 10B5     		push	{r4, lr}
+ 268 0002 094C     		ldr	r4, .L41
+ 269 0004 2046     		mov	r0, r4
+ 270 0006 FFF7FEFF 		bl	_ZN5daisy10DaisyPetal21ProcessAnalogControlsEv
+ 271 000a 2046     		mov	r0, r4
+ 272 000c FFF7FEFF 		bl	_ZN5daisy10DaisyPetal22ProcessDigitalControlsEv
+ 273 0010 04F15C00 		add	r0, r4, #92
+ 274 0014 FFF7FEFF 		bl	_ZN5daisy13AnalogControl7ProcessEv
+ 275 0018 044B     		ldr	r3, .L41+4
+ 276 001a BDE81040 		pop	{r4, lr}
+ 277 001e 83ED000A 		vstr.32	s0, [r3]
+ 278 0022 FFF7FEBF 		b	_Z13UpdateButtonsv
+ 279              	.L42:
+ 280 0026 00BF     		.align	2
+ 281              	.L41:
+ 282 0028 00000000 		.word	.LANCHOR6
+ 283 002c 00000000 		.word	.LANCHOR8
+ 285              		.section	.text._Z11WriteBufferPfj,"ax",%progbits
+ 286              		.align	1
+ 287              		.p2align 2,,3
+ 288              		.global	_Z11WriteBufferPfj
+ 289              		.syntax unified
+ 290              		.thumb
+ 291              		.thumb_func
+ 292              		.fpu fpv5-d16
+ 294              	_Z11WriteBufferPfj:
+ 295              		@ args = 0, pretend = 0, frame = 0
+ 296              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 6
+
+
+ 297              		@ link register save eliminated.
+ 298 0000 0C4A     		ldr	r2, .L49
+ 299 0002 00EB8101 		add	r1, r0, r1, lsl #2
+ 300 0006 0C4B     		ldr	r3, .L49+4
+ 301 0008 D1ED007A 		vldr.32	s15, [r1]
+ 302 000c 10B4     		push	{r4}
+ 303 000e 1468     		ldr	r4, [r2]
+ 304 0010 0A4A     		ldr	r2, .L49+8
+ 305 0012 03EB8403 		add	r3, r3, r4, lsl #2
+ 306 0016 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 307 0018 93ED007A 		vldr.32	s14, [r3]
+ 308 001c 77EE877A 		vadd.f32	s15, s15, s14
+ 309 0020 C3ED007A 		vstr.32	s15, [r3]
+ 310 0024 1AB1     		cbz	r2, .L43
+ 311 0026 064A     		ldr	r2, .L49+12
+ 312 0028 1368     		ldr	r3, [r2]
+ 313 002a 0133     		adds	r3, r3, #1
+ 314 002c 1360     		str	r3, [r2]
+ 315              	.L43:
+ 316 002e 5DF8044B 		ldr	r4, [sp], #4
+ 317 0032 7047     		bx	lr
+ 318              	.L50:
+ 319              		.align	2
+ 320              	.L49:
+ 321 0034 00000000 		.word	.LANCHOR3
+ 322 0038 00000000 		.word	buf
+ 323 003c 00000000 		.word	.LANCHOR2
+ 324 0040 00000000 		.word	.LANCHOR4
+ 326              		.section	.text._Z11NextSamplesRfPfj,"ax",%progbits
+ 327              		.align	1
+ 328              		.p2align 2,,3
+ 329              		.global	_Z11NextSamplesRfPfj
+ 330              		.syntax unified
+ 331              		.thumb
+ 332              		.thumb_func
+ 333              		.fpu fpv5-d16
+ 335              	_Z11NextSamplesRfPfj:
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338              		@ link register save eliminated.
+ 339 0000 284B     		ldr	r3, .L63
+ 340 0002 F0B4     		push	{r4, r5, r6, r7}
+ 341 0004 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+ 342 0006 84BB     		cbnz	r4, .L52
+ 343 0008 274F     		ldr	r7, .L63+4
+ 344 000a 284D     		ldr	r5, .L63+8
+ 345 000c 3B68     		ldr	r3, [r7]
+ 346 000e 284E     		ldr	r6, .L63+12
+ 347 0010 05EB830C 		add	ip, r5, r3, lsl #2
+ 348 0014 DCED007A 		vldr.32	s15, [ip]
+ 349 0018 D6F800C0 		ldr	ip, [r6]
+ 350              	.L53:
+ 351 001c 254D     		ldr	r5, .L63+16
+ 352 001e C0ED007A 		vstr.32	s15, [r0]
+ 353 0022 AC45     		cmp	ip, r5
+ 354 0024 08DB     		blt	.L55
+ 355 0026 4FF0000C 		mov	ip, #0
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 7
+
+
+ 356 002a C6F800C0 		str	ip, [r6]
+ 357 002e 224E     		ldr	r6, .L63+20
+ 358 0030 86F800C0 		strb	ip, [r6]
+ 359 0034 214E     		ldr	r6, .L63+24
+ 360 0036 3560     		str	r5, [r6]
+ 361              	.L55:
+ 362 0038 214D     		ldr	r5, .L63+28
+ 363 003a 2D78     		ldrb	r5, [r5]	@ zero_extendqisi2
+ 364 003c 3DB1     		cbz	r5, .L56
+ 365 003e 1F4D     		ldr	r5, .L63+24
+ 366 0040 0133     		adds	r3, r3, #1
+ 367 0042 2D68     		ldr	r5, [r5]
+ 368 0044 93FBF5F6 		sdiv	r6, r3, r5
+ 369 0048 05FB1633 		mls	r3, r5, r6, r3
+ 370 004c 3B60     		str	r3, [r7]
+ 371              	.L56:
+ 372 004e 54B9     		cbnz	r4, .L51
+ 373 0050 1C4B     		ldr	r3, .L63+32
+ 374 0052 01EB8201 		add	r1, r1, r2, lsl #2
+ 375 0056 D3ED006A 		vldr.32	s13, [r3]
+ 376 005a 91ED007A 		vldr.32	s14, [r1]
+ 377 005e A6EEA77A 		vfma.f32	s14, s13, s15
+ 378 0062 80ED007A 		vstr.32	s14, [r0]
+ 379              	.L51:
+ 380 0066 F0BC     		pop	{r4, r5, r6, r7}
+ 381 0068 7047     		bx	lr
+ 382              	.L52:
+ 383 006a 01EB8203 		add	r3, r1, r2, lsl #2
+ 384 006e 0E4F     		ldr	r7, .L63+4
+ 385 0070 0E4D     		ldr	r5, .L63+8
+ 386 0072 D3ED007A 		vldr.32	s15, [r3]
+ 387 0076 3B68     		ldr	r3, [r7]
+ 388 0078 0D4E     		ldr	r6, .L63+12
+ 389 007a 05EB8305 		add	r5, r5, r3, lsl #2
+ 390 007e 95ED007A 		vldr.32	s14, [r5]
+ 391 0082 77EE877A 		vadd.f32	s15, s15, s14
+ 392 0086 C5ED007A 		vstr.32	s15, [r5]
+ 393 008a 0B4D     		ldr	r5, .L63+20
+ 394 008c 2D78     		ldrb	r5, [r5]	@ zero_extendqisi2
+ 395 008e 2DB1     		cbz	r5, .L62
+ 396 0090 3568     		ldr	r5, [r6]
+ 397 0092 05F1010C 		add	ip, r5, #1
+ 398 0096 C6F800C0 		str	ip, [r6]
+ 399 009a BFE7     		b	.L53
+ 400              	.L62:
+ 401 009c D6F800C0 		ldr	ip, [r6]
+ 402 00a0 BCE7     		b	.L53
+ 403              	.L64:
+ 404 00a2 00BF     		.align	2
+ 405              	.L63:
+ 406 00a4 00000000 		.word	.LANCHOR1
+ 407 00a8 00000000 		.word	.LANCHOR3
+ 408 00ac 00000000 		.word	buf
+ 409 00b0 00000000 		.word	.LANCHOR4
+ 410 00b4 00BADB00 		.word	14400000
+ 411 00b8 00000000 		.word	.LANCHOR2
+ 412 00bc 00000000 		.word	.LANCHOR5
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 8
+
+
+ 413 00c0 00000000 		.word	.LANCHOR0
+ 414 00c4 00000000 		.word	.LANCHOR8
+ 416              		.section	.text._ZL13AudioCallbackPfS_j,"ax",%progbits
+ 417              		.align	1
+ 418              		.p2align 2,,3
+ 419              		.syntax unified
+ 420              		.thumb
+ 421              		.thumb_func
+ 422              		.fpu fpv5-d16
+ 424              	_ZL13AudioCallbackPfS_j:
+ 425              		@ args = 0, pretend = 0, frame = 8
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 428 0002 0023     		movs	r3, #0
+ 429 0004 83B0     		sub	sp, sp, #12
+ 430 0006 0746     		mov	r7, r0
+ 431 0008 1048     		ldr	r0, .L73
+ 432 000a 1646     		mov	r6, r2
+ 433 000c 0193     		str	r3, [sp, #4]	@ float
+ 434 000e 0D46     		mov	r5, r1
+ 435 0010 FFF7FEFF 		bl	_ZN5daisy10DaisyPetal21ProcessAnalogControlsEv
+ 436 0014 0D48     		ldr	r0, .L73
+ 437 0016 FFF7FEFF 		bl	_ZN5daisy10DaisyPetal22ProcessDigitalControlsEv
+ 438 001a 0D48     		ldr	r0, .L73+4
+ 439 001c FFF7FEFF 		bl	_ZN5daisy13AnalogControl7ProcessEv
+ 440 0020 0C4B     		ldr	r3, .L73+8
+ 441 0022 83ED000A 		vstr.32	s0, [r3]
+ 442 0026 FFF7FEFF 		bl	_Z13UpdateButtonsv
+ 443 002a 66B1     		cbz	r6, .L65
+ 444 002c 0024     		movs	r4, #0
+ 445              	.L67:
+ 446 002e 2246     		mov	r2, r4
+ 447 0030 0234     		adds	r4, r4, #2
+ 448 0032 3946     		mov	r1, r7
+ 449 0034 01A8     		add	r0, sp, #4
+ 450 0036 FFF7FEFF 		bl	_Z11NextSamplesRfPfj
+ 451 003a 019B     		ldr	r3, [sp, #4]	@ float
+ 452 003c A642     		cmp	r6, r4
+ 453 003e 6B60     		str	r3, [r5, #4]	@ float
+ 454 0040 45F8083B 		str	r3, [r5], #8	@ float
+ 455 0044 F3D8     		bhi	.L67
+ 456              	.L65:
+ 457 0046 03B0     		add	sp, sp, #12
+ 458              		@ sp needed
+ 459 0048 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 460              	.L74:
+ 461 004a 00BF     		.align	2
+ 462              	.L73:
+ 463 004c 00000000 		.word	.LANCHOR6
+ 464 0050 5C000000 		.word	.LANCHOR6+92
+ 465 0054 00000000 		.word	.LANCHOR8
+ 467              		.section	.text.startup._GLOBAL__sub_I_first,"ax",%progbits
+ 468              		.align	1
+ 469              		.p2align 2,,3
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 9
+
+
+ 473              		.fpu fpv5-d16
+ 475              	_GLOBAL__sub_I_first:
+ 476              		@ args = 0, pretend = 0, frame = 0
+ 477              		@ frame_needed = 0, uses_anonymous_args = 0
+ 478 0000 10B5     		push	{r4, lr}
+ 479 0002 0A4C     		ldr	r4, .L77
+ 480 0004 0023     		movs	r3, #0
+ 481 0006 4FF40072 		mov	r2, #512
+ 482 000a 0949     		ldr	r1, .L77+4
+ 483 000c 04F2B640 		addw	r0, r4, #1206
+ 484 0010 6361     		str	r3, [r4, #20]
+ 485 0012 2362     		str	r3, [r4, #32]
+ 486 0014 C4F8A034 		str	r3, [r4, #1184]
+ 487 0018 FFF7FEFF 		bl	memcpy
+ 488 001c 2046     		mov	r0, r4
+ 489 001e 054A     		ldr	r2, .L77+8
+ 490 0020 0549     		ldr	r1, .L77+12
+ 491 0022 BDE81040 		pop	{r4, lr}
+ 492 0026 FFF7FEBF 		b	__aeabi_atexit
+ 493              	.L78:
+ 494 002a 00BF     		.align	2
+ 495              	.L77:
+ 496 002c 00000000 		.word	.LANCHOR6
+ 497 0030 00000000 		.word	.LANCHOR9
+ 498 0034 00000000 		.word	__dso_handle
+ 499 0038 00000000 		.word	_ZN5daisy10DaisyPetalD1Ev
+ 501              		.section	.init_array,"aw",%init_array
+ 502              		.align	2
+ 503 0000 00000000 		.word	_GLOBAL__sub_I_first(target1)
+ 504              		.global	res
+ 505              		.global	drywet
+ 506              		.global	len
+ 507              		.global	mod
+ 508              		.global	buf
+ 509              		.global	pos
+ 510              		.global	play
+ 511              		.global	rec
+ 512              		.global	first
+ 513              		.section	.rodata
+ 514              		.align	2
+ 515              		.set	.LANCHOR9,. + 0
+ 516              	.LC0:
+ 517 0000 0000     		.short	0
+ 518 0002 0100     		.short	1
+ 519 0004 0100     		.short	1
+ 520 0006 0100     		.short	1
+ 521 0008 0100     		.short	1
+ 522 000a 0100     		.short	1
+ 523 000c 0100     		.short	1
+ 524 000e 0100     		.short	1
+ 525 0010 0100     		.short	1
+ 526 0012 0100     		.short	1
+ 527 0014 0100     		.short	1
+ 528 0016 0100     		.short	1
+ 529 0018 0200     		.short	2
+ 530 001a 0200     		.short	2
+ 531 001c 0200     		.short	2
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 10
+
+
+ 532 001e 0200     		.short	2
+ 533 0020 0200     		.short	2
+ 534 0022 0200     		.short	2
+ 535 0024 0200     		.short	2
+ 536 0026 0300     		.short	3
+ 537 0028 0300     		.short	3
+ 538 002a 0400     		.short	4
+ 539 002c 0400     		.short	4
+ 540 002e 0500     		.short	5
+ 541 0030 0500     		.short	5
+ 542 0032 0600     		.short	6
+ 543 0034 0700     		.short	7
+ 544 0036 0800     		.short	8
+ 545 0038 0800     		.short	8
+ 546 003a 0900     		.short	9
+ 547 003c 0A00     		.short	10
+ 548 003e 0B00     		.short	11
+ 549 0040 0C00     		.short	12
+ 550 0042 0D00     		.short	13
+ 551 0044 0F00     		.short	15
+ 552 0046 1000     		.short	16
+ 553 0048 1100     		.short	17
+ 554 004a 1200     		.short	18
+ 555 004c 1400     		.short	20
+ 556 004e 1500     		.short	21
+ 557 0050 1700     		.short	23
+ 558 0052 1900     		.short	25
+ 559 0054 1A00     		.short	26
+ 560 0056 1C00     		.short	28
+ 561 0058 1E00     		.short	30
+ 562 005a 2000     		.short	32
+ 563 005c 2200     		.short	34
+ 564 005e 2400     		.short	36
+ 565 0060 2600     		.short	38
+ 566 0062 2800     		.short	40
+ 567 0064 2B00     		.short	43
+ 568 0066 2D00     		.short	45
+ 569 0068 3000     		.short	48
+ 570 006a 3200     		.short	50
+ 571 006c 3500     		.short	53
+ 572 006e 3800     		.short	56
+ 573 0070 3B00     		.short	59
+ 574 0072 3E00     		.short	62
+ 575 0074 4100     		.short	65
+ 576 0076 4400     		.short	68
+ 577 0078 4700     		.short	71
+ 578 007a 4B00     		.short	75
+ 579 007c 4E00     		.short	78
+ 580 007e 5200     		.short	82
+ 581 0080 5500     		.short	85
+ 582 0082 5900     		.short	89
+ 583 0084 5D00     		.short	93
+ 584 0086 6100     		.short	97
+ 585 0088 6500     		.short	101
+ 586 008a 6900     		.short	105
+ 587 008c 6E00     		.short	110
+ 588 008e 7200     		.short	114
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 11
+
+
+ 589 0090 7700     		.short	119
+ 590 0092 7B00     		.short	123
+ 591 0094 8000     		.short	128
+ 592 0096 8500     		.short	133
+ 593 0098 8A00     		.short	138
+ 594 009a 8F00     		.short	143
+ 595 009c 9500     		.short	149
+ 596 009e 9A00     		.short	154
+ 597 00a0 9F00     		.short	159
+ 598 00a2 A500     		.short	165
+ 599 00a4 AB00     		.short	171
+ 600 00a6 B100     		.short	177
+ 601 00a8 B700     		.short	183
+ 602 00aa BD00     		.short	189
+ 603 00ac C300     		.short	195
+ 604 00ae CA00     		.short	202
+ 605 00b0 D000     		.short	208
+ 606 00b2 D700     		.short	215
+ 607 00b4 DE00     		.short	222
+ 608 00b6 E500     		.short	229
+ 609 00b8 EC00     		.short	236
+ 610 00ba F300     		.short	243
+ 611 00bc FA00     		.short	250
+ 612 00be 0201     		.short	258
+ 613 00c0 0A01     		.short	266
+ 614 00c2 1101     		.short	273
+ 615 00c4 1901     		.short	281
+ 616 00c6 2201     		.short	290
+ 617 00c8 2A01     		.short	298
+ 618 00ca 3201     		.short	306
+ 619 00cc 3B01     		.short	315
+ 620 00ce 4401     		.short	324
+ 621 00d0 4C01     		.short	332
+ 622 00d2 5501     		.short	341
+ 623 00d4 5F01     		.short	351
+ 624 00d6 6801     		.short	360
+ 625 00d8 7101     		.short	369
+ 626 00da 7B01     		.short	379
+ 627 00dc 8501     		.short	389
+ 628 00de 8F01     		.short	399
+ 629 00e0 9901     		.short	409
+ 630 00e2 A301     		.short	419
+ 631 00e4 AE01     		.short	430
+ 632 00e6 B801     		.short	440
+ 633 00e8 C301     		.short	451
+ 634 00ea CE01     		.short	462
+ 635 00ec D901     		.short	473
+ 636 00ee E501     		.short	485
+ 637 00f0 F001     		.short	496
+ 638 00f2 FC01     		.short	508
+ 639 00f4 0802     		.short	520
+ 640 00f6 1402     		.short	532
+ 641 00f8 2002     		.short	544
+ 642 00fa 2C02     		.short	556
+ 643 00fc 3902     		.short	569
+ 644 00fe 4602     		.short	582
+ 645 0100 5202     		.short	594
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 12
+
+
+ 646 0102 6002     		.short	608
+ 647 0104 6D02     		.short	621
+ 648 0106 7A02     		.short	634
+ 649 0108 8802     		.short	648
+ 650 010a 9602     		.short	662
+ 651 010c A402     		.short	676
+ 652 010e B202     		.short	690
+ 653 0110 C002     		.short	704
+ 654 0112 CF02     		.short	719
+ 655 0114 DE02     		.short	734
+ 656 0116 ED02     		.short	749
+ 657 0118 FC02     		.short	764
+ 658 011a 0B03     		.short	779
+ 659 011c 1B03     		.short	795
+ 660 011e 2B03     		.short	811
+ 661 0120 3B03     		.short	827
+ 662 0122 4B03     		.short	843
+ 663 0124 5B03     		.short	859
+ 664 0126 6C03     		.short	876
+ 665 0128 7D03     		.short	893
+ 666 012a 8E03     		.short	910
+ 667 012c 9F03     		.short	927
+ 668 012e B003     		.short	944
+ 669 0130 C203     		.short	962
+ 670 0132 D403     		.short	980
+ 671 0134 E603     		.short	998
+ 672 0136 F803     		.short	1016
+ 673 0138 0A04     		.short	1034
+ 674 013a 1D04     		.short	1053
+ 675 013c 3004     		.short	1072
+ 676 013e 4304     		.short	1091
+ 677 0140 5604     		.short	1110
+ 678 0142 6A04     		.short	1130
+ 679 0144 7E04     		.short	1150
+ 680 0146 9204     		.short	1170
+ 681 0148 A604     		.short	1190
+ 682 014a BA04     		.short	1210
+ 683 014c CF04     		.short	1231
+ 684 014e E404     		.short	1252
+ 685 0150 F904     		.short	1273
+ 686 0152 0E05     		.short	1294
+ 687 0154 2405     		.short	1316
+ 688 0156 3A05     		.short	1338
+ 689 0158 5005     		.short	1360
+ 690 015a 6605     		.short	1382
+ 691 015c 7C05     		.short	1404
+ 692 015e 9305     		.short	1427
+ 693 0160 AA05     		.short	1450
+ 694 0162 C105     		.short	1473
+ 695 0164 D905     		.short	1497
+ 696 0166 F005     		.short	1520
+ 697 0168 0806     		.short	1544
+ 698 016a 2006     		.short	1568
+ 699 016c 3906     		.short	1593
+ 700 016e 5106     		.short	1617
+ 701 0170 6A06     		.short	1642
+ 702 0172 8306     		.short	1667
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 13
+
+
+ 703 0174 9D06     		.short	1693
+ 704 0176 B606     		.short	1718
+ 705 0178 D006     		.short	1744
+ 706 017a EA06     		.short	1770
+ 707 017c 0507     		.short	1797
+ 708 017e 1F07     		.short	1823
+ 709 0180 3A07     		.short	1850
+ 710 0182 5507     		.short	1877
+ 711 0184 7107     		.short	1905
+ 712 0186 8C07     		.short	1932
+ 713 0188 A807     		.short	1960
+ 714 018a C407     		.short	1988
+ 715 018c E107     		.short	2017
+ 716 018e FD07     		.short	2045
+ 717 0190 1A08     		.short	2074
+ 718 0192 3708     		.short	2103
+ 719 0194 5508     		.short	2133
+ 720 0196 7208     		.short	2162
+ 721 0198 9008     		.short	2192
+ 722 019a AF08     		.short	2223
+ 723 019c CD08     		.short	2253
+ 724 019e EC08     		.short	2284
+ 725 01a0 0B09     		.short	2315
+ 726 01a2 2A09     		.short	2346
+ 727 01a4 4A09     		.short	2378
+ 728 01a6 6A09     		.short	2410
+ 729 01a8 8A09     		.short	2442
+ 730 01aa AA09     		.short	2474
+ 731 01ac CB09     		.short	2507
+ 732 01ae EC09     		.short	2540
+ 733 01b0 0D0A     		.short	2573
+ 734 01b2 2E0A     		.short	2606
+ 735 01b4 500A     		.short	2640
+ 736 01b6 720A     		.short	2674
+ 737 01b8 940A     		.short	2708
+ 738 01ba B70A     		.short	2743
+ 739 01bc DA0A     		.short	2778
+ 740 01be FD0A     		.short	2813
+ 741 01c0 210B     		.short	2849
+ 742 01c2 440B     		.short	2884
+ 743 01c4 680B     		.short	2920
+ 744 01c6 8D0B     		.short	2957
+ 745 01c8 B10B     		.short	2993
+ 746 01ca D60B     		.short	3030
+ 747 01cc FB0B     		.short	3067
+ 748 01ce 210C     		.short	3105
+ 749 01d0 470C     		.short	3143
+ 750 01d2 6D0C     		.short	3181
+ 751 01d4 930C     		.short	3219
+ 752 01d6 BA0C     		.short	3258
+ 753 01d8 E10C     		.short	3297
+ 754 01da 080D     		.short	3336
+ 755 01dc 300D     		.short	3376
+ 756 01de 580D     		.short	3416
+ 757 01e0 800D     		.short	3456
+ 758 01e2 A80D     		.short	3496
+ 759 01e4 D10D     		.short	3537
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 14
+
+
+ 760 01e6 FA0D     		.short	3578
+ 761 01e8 230E     		.short	3619
+ 762 01ea 4D0E     		.short	3661
+ 763 01ec 770E     		.short	3703
+ 764 01ee A10E     		.short	3745
+ 765 01f0 CC0E     		.short	3788
+ 766 01f2 F70E     		.short	3831
+ 767 01f4 220F     		.short	3874
+ 768 01f6 4E0F     		.short	3918
+ 769 01f8 7A0F     		.short	3962
+ 770 01fa A60F     		.short	4006
+ 771 01fc D20F     		.short	4050
+ 772 01fe FF0F     		.short	4095
+ 773              		.section	.bss._ZL5petal,"aw",%nobits
+ 774              		.align	2
+ 775              		.set	.LANCHOR6,. + 0
+ 778              	_ZL5petal:
+ 779 0000 00000000 		.space	1720
+ 779      00000000 
+ 779      00000000 
+ 779      00000000 
+ 779      00000000 
+ 780              		.section	.bss.drywet,"aw",%nobits
+ 781              		.align	2
+ 782              		.set	.LANCHOR8,. + 0
+ 785              	drywet:
+ 786 0000 00000000 		.space	4
+ 787              		.section	.bss.len,"aw",%nobits
+ 788              		.align	2
+ 789              		.set	.LANCHOR4,. + 0
+ 792              	len:
+ 793 0000 00000000 		.space	4
+ 794              		.section	.bss.play,"aw",%nobits
+ 795              		.set	.LANCHOR0,. + 0
+ 798              	play:
+ 799 0000 00       		.space	1
+ 800              		.section	.bss.pos,"aw",%nobits
+ 801              		.align	2
+ 802              		.set	.LANCHOR3,. + 0
+ 805              	pos:
+ 806 0000 00000000 		.space	4
+ 807              		.section	.bss.rec,"aw",%nobits
+ 808              		.set	.LANCHOR1,. + 0
+ 811              	rec:
+ 812 0000 00       		.space	1
+ 813              		.section	.bss.res,"aw",%nobits
+ 814              		.set	.LANCHOR7,. + 0
+ 817              	res:
+ 818 0000 00       		.space	1
+ 819              		.section	.data.first,"aw"
+ 820              		.set	.LANCHOR2,. + 0
+ 823              	first:
+ 824 0000 01       		.byte	1
+ 825              		.section	.data.mod,"aw"
+ 826              		.align	2
+ 827              		.set	.LANCHOR5,. + 0
+ 830              	mod:
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 15
+
+
+ 831 0000 00BADB00 		.word	14400000
+ 832              		.section	.sdram_bss,"aw"
+ 833              		.align	2
+ 836              	buf:
+ 837 0000 00000000 		.space	57600000
+ 837      00000000 
+ 837      00000000 
+ 837      00000000 
+ 837      00000000 
+ 838              		.hidden	__dso_handle
+ 839              		.ident	"GCC: (GNU Arm Embedded Toolchain 10-2020-q4-major) 10.2.1 20201103 (release)"
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Looper.cpp
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:15     .text._ZN5daisy10DaisyPetalD2Ev:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:24     .text._ZN5daisy10DaisyPetalD2Ev:00000000 _ZN5daisy10DaisyPetalD2Ev
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:24     .text._ZN5daisy10DaisyPetalD2Ev:00000000 _ZN5daisy10DaisyPetalD1Ev
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:33     .text._Z11ResetBufferv:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:41     .text._Z11ResetBufferv:00000000 _Z11ResetBufferv
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:71     .text._Z11ResetBufferv:00000030 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:836    .sdram_bss:00000000 buf
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:81     .text.startup.main:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:89     .text.startup.main:00000000 main
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:126    .text.startup.main:00000054 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:424    .text._ZL13AudioCallbackPfS_j:00000000 _ZL13AudioCallbackPfS_j
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:132    .text._Z13UpdateButtonsv:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:140    .text._Z13UpdateButtonsv:00000000 _Z13UpdateButtonsv
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:243    .text._Z13UpdateButtonsv:000000c4 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:256    .text._Z8Controlsv:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:264    .text._Z8Controlsv:00000000 _Z8Controlsv
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:282    .text._Z8Controlsv:00000028 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:286    .text._Z11WriteBufferPfj:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:294    .text._Z11WriteBufferPfj:00000000 _Z11WriteBufferPfj
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:321    .text._Z11WriteBufferPfj:00000034 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:327    .text._Z11NextSamplesRfPfj:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:335    .text._Z11NextSamplesRfPfj:00000000 _Z11NextSamplesRfPfj
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:406    .text._Z11NextSamplesRfPfj:000000a4 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:417    .text._ZL13AudioCallbackPfS_j:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:463    .text._ZL13AudioCallbackPfS_j:0000004c $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:468    .text.startup._GLOBAL__sub_I_first:00000000 $t
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:475    .text.startup._GLOBAL__sub_I_first:00000000 _GLOBAL__sub_I_first
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:496    .text.startup._GLOBAL__sub_I_first:0000002c $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:502    .init_array:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:817    .bss.res:00000000 res
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:785    .bss.drywet:00000000 drywet
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:792    .bss.len:00000000 len
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:830    .data.mod:00000000 mod
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:805    .bss.pos:00000000 pos
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:798    .bss.play:00000000 play
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:811    .bss.rec:00000000 rec
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:823    .data.first:00000000 first
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:514    .rodata:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:774    .bss._ZL5petal:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:778    .bss._ZL5petal:00000000 _ZL5petal
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:781    .bss.drywet:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:788    .bss.len:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:799    .bss.play:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:801    .bss.pos:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:812    .bss.rec:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:818    .bss.res:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:826    .data.mod:00000000 $d
+C:\Users\TT\AppData\Local\Temp\ccYmC22v.s:833    .sdram_bss:00000000 $d
+                           .group:00000000 _ZN5daisy10DaisyPetalD5Ev
+
+UNDEFINED SYMBOLS
+memset
+_ZN5daisy10DaisyPetal4InitEb
+_ZN5daisy10DaisyPetal8StartAdcEv
+_ZN5daisy10DaisyPetal10StartAudioEPFvPfS1_jE
+ARM GAS  C:\Users\TT\AppData\Local\Temp\ccYmC22v.s 			page 17
+
+
+_ZN5daisy10DaisyPetal16SetFootswitchLedENS0_13FootswitchLedEf
+_ZN5daisy10DaisyPetal10UpdateLedsEv
+_ZN5daisy6System5DelayEm
+_ZN5daisy10DaisyPetal21ProcessAnalogControlsEv
+_ZN5daisy10DaisyPetal22ProcessDigitalControlsEv
+_ZN5daisy13AnalogControl7ProcessEv
+memcpy
+__aeabi_atexit
+__dso_handle
